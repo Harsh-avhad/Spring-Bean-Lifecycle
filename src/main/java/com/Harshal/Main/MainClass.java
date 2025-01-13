@@ -12,12 +12,17 @@ public class MainClass {
 
 	public static void main(String[] args) {
 
+		// Load Spring context
 		ApplicationContext context = new ClassPathXmlApplicationContext("Spring-Beans.xml");
 		
+		// Get the Motor bean
 		Motor motor = context.getBean(Motor.class);
 		
+		// Call the method to simulate work
 		motor.doWork();
 		
+		
+		//call shut down hook--> @predestroy
 		ConfigurableApplicationContext cfgCtxt = (ConfigurableApplicationContext)context;
 		cfgCtxt.registerShutdownHook();
 		
